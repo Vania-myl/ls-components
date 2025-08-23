@@ -1,0 +1,65 @@
+@import '../../style/common.scss';
+.ls-card{
+    border-radius: 8px;
+    background-color: #ddb0b0;
+    box-shadow: $shadow;
+    padding: map-get($map: $spacing, $key: s);
+    padding-bottom: 0px;
+    margin: map-get($map: $spacing, $key: m);;
+    transition: box-shadow 0.3s ease;
+
+&:not(.ls-card--no-border){
+    border:$border;
+}
+&:not(.ls-card--no-shadow){
+    box-shadow: $shadow;
+}
+&:hover {
+    box-shadow: $shadow-hover;
+}
+&__header {
+    display: flex;
+     justify-content: center;
+    border-bottom: $border;
+    
+    align-items: center;
+ 
+&-title {
+    font-size: map-get($map: $font-size, $key: 3);
+    font-weight: bold;
+    color:$text-color1;
+      margin-bottom: 4px;
+}
+&-content {
+    color: $text-color2;
+    font-size: map-get($map: ($font-size), $key: 1);
+    margin-left: map-get($map: ($spacing), $key:s );
+}
+}
+&__body{
+    padding:map-get($spacing, s);
+    color:$text-color3;
+    &-image {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: map-get($map: $spacing, $key: s);
+}
+    
+}
+
+&__footer{
+    display: flex;
+    justify-content: space-around;
+    padding-top:map-get($map: $spacing, $key: s);
+    border-top: $border;
+}
+&--small{
+    width: map-get($map: $size, $key: s);
+}
+&--medium{
+   width: map-get($map: $size, $key: m);
+}
+&--large{
+    width: map-get($map: $size, $key: l);
+}}

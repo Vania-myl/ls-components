@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES6",  // 至少 ES6，避免低级语法不支持
+    "module": "ESNext",
+    "types": ["vue", "node"], 
+    "moduleResolution": "Node",
+    "jsx": "preserve",
+    "strict": true,
+    "isolatedModules": true,  // 必须开启，Vue 单文件组件需要
+    "esModuleInterop": true,
+    "lib": ["ESNext", "DOM"]
+  },
+  "include": ["src/**/*.ts",  "src/**/*.d.ts", "src/**/*.vue"],
+  "exclude": ["node_modules"]
+}

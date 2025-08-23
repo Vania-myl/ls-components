@@ -1,0 +1,48 @@
+@import '../../style/common.scss';
+.ls-message {
+    display: flex;
+    z-index: 1000;
+    position: relative;
+    align-items: center;
+    width: 300px;
+    padding: map-get($map: $spacing, $key: s);
+    margin:auto auto;
+    border-radius: 4px;
+    box-shadow: $shadow;
+    transition: box-shadow 0.3s ease;
+   
+    &--info {
+        background-color: #e0f7fa;
+        color: #006064;
+    }
+
+    &--success {
+        background-color: #e8f5e9;
+        color: #1b5e20;
+    }
+
+    &--warning {
+        background-color: #fff3e0;
+        color: #bf360c;
+    }
+
+    &--error {
+        background-color: #ffebee;
+        color: #b71c1c;
+    }
+
+    &__icon-svg {
+        display: inline-flex;
+        margin-right: 10px;
+        padding-top: 5px;
+       width: 18px;
+       height: 18px;
+
+    //margin-right: map-get($map: $spacing, $key: s);
+     // font-size: map-get($map: $font-size, $key: 3);
+    }
+    &__close{
+        position:absolute;
+        right:30px;
+    }
+}
