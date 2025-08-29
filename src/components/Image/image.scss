@@ -1,32 +1,98 @@
 @import '../../style/common.scss';
 .ls-image{
     display: flex;
-    position: relative;
-    background-color: #cddadd;
-    overflow: hidden;
+   position: relative;
+    background-color: #e2e2e2;
+    width: 100%;
+  height: 100%;
+  overflow: hidden;
     
-    &.is-loading{
-    position:absolute;
-    top: 0px;
-    left: 0px;
-   // width: 100%;
-    //height: 100%;
-   
-    &.img{
+
+&.is-loading{
+    align-items: center;
+    justify-content: center;
+    .img{
         opacity:0;
     }    
 }
 &.is-error{
     align-items: center;
     justify-content: center;
+    
+    .error{
+        display: flex;
+    cursor: pointer;
+    }
 }
+
+}
+.img-container{
+   display:flex;
+    overflow: hidden;
+    position:relative;
+.zoom-control{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    gap: 8px;
+  padding: 4px 8px;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  font-size: 12px;
+  border-radius: 4px;
 }
 .img{
-    width: 100%;
-    height: 100%;
+    display: block;
+   width: 100%;
+   height: 100%;
     object-fit: cover;
     transition: opacity 0.3s;
+    
+}}
+.preview{
+    position:fixed;
+    top:0;
+    left: 0;
+     width: 100vw;
+  height: 100vh;
+  z-index: 9999; // 确保在最上层
+   background: rgba(43, 41, 41, 0.9); // 深色半透明背景
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px; 
+  box-sizing: border-box;
 }
-.error{
-    display: flex;
+.preview-img {
+  //max-width: 100%;
+  width: 80%;
+   z-index: 9999;
+  max-height: 85vh; // 限制最大高度，预留顶部空间放关闭按钮
+  display: block;
+  margin:  auto;
+  background:white; // 浅色背景衬托图片
+  padding: 10px;
+  
+}
+.preview-close-bnt {
+  position: absolute;
+  top: 35px;
+  right: 35px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.4);
+  }
 }

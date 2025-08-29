@@ -1,11 +1,12 @@
 {
   "name": "components-myl",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.1.1",
+
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "package": "vue-cli-service build --target lib ./src/components/index.ts --name ls-ui --dest ls-ui"
   },
   "dependencies": {
     "@vue/runtime-core": "^3.3.4",
@@ -51,5 +52,15 @@
     "last 2 versions",
     "not dead",
     "not ie 11"
+  ],
+  "description": "## Project setup ``` npm install ```",
+  "main": ".eslintrc.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "files": [
+    "dist",
+    "ls-ui",
+    "components"
   ]
 }

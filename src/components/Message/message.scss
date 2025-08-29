@@ -2,11 +2,14 @@
 .ls-message {
     display: flex;
     z-index: 1000;
-    position: relative;
+    position: fixed;
     align-items: center;
     width: 300px;
+    top:60px;
+    left: 50% ;
+    transform: translateX(-50%);
     padding: map-get($map: $spacing, $key: s);
-    margin:auto auto;
+    //margin:auto auto;
     border-radius: 4px;
     box-shadow: $shadow;
     transition: box-shadow 0.3s ease;

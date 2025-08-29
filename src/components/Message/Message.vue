@@ -1,7 +1,8 @@
 <template>
     <div class="ls-message" 
     :class="['ls-message--'+type,{'ls-message--close':showClose,'ls-message--check':showCheck}]"
-    
+    @mouseenter="pauseTimer" 
+      @mouseleave="resumeTimer"
     @click="handleClick"
     >
 <!--图标-->
@@ -23,7 +24,7 @@
 
 <script setup lang="ts">
 import './message.scss';
-import { ref } from 'vue';
+import { ref ,onUnmounted,onMounted} from 'vue';
 import  lsButton  from '../Button/Button.vue';
 const show= ref(false); // 控制消息显示的变量，初始值为 true
 const handleClick = () => {
@@ -49,12 +50,47 @@ const props = defineProps({
         type: Boolean,
         default: false
     },
+     duration: { 
+        type: Number,
+         default: 2000 
+        }, // 自动关闭时长（ms），0 = 不自动关闭
     
 })
+const visible = ref(false)
 const emit = defineEmits(['close']);
 const close = () => {
+     visible.value = false
+      if (timer) clearTimeout(timer) // 清除定时器，避免残留
     emit('close'); // 触发 close 事件
 };
 
+let timer: NodeJS.Timeout | null = null // 存储定时器，用于暂停/清除
+// 启动定时器（自动关闭）
+const startTimer = () => {
+  if (props.duration <= 0) return // 时长为0，不自动关闭
+  // 清除已有定时器，避免重复创建
+  if (timer) clearTimeout(timer)
+  // 新建定时器，到时间执行关闭
+  timer = setTimeout(close, props.duration)
+}
+// 暂停定时器（鼠标悬浮时）
+const pauseTimer = () => {
+  if (timer) clearTimeout(timer) // 清除定时器，暂停计时
+}
+
+// 继续定时器（鼠标离开时）
+const resumeTimer = () => {
+  startTimer() // 重新启动定时器，继续倒计时
+}
+// 组件挂载后：显示消息 + 启动自动关闭定时器
+onMounted(() => {
+  visible.value = true
+  startTimer()
+})
+
+// 组件卸载前：清除定时器（防止内存泄漏）
+onUnmounted(() => {
+  if (timer) clearTimeout(timer)
+})
 
 </script>
